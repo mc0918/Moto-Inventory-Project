@@ -1,14 +1,39 @@
 package com.example.motoinventoryservice.controller;
 
 import com.example.motoinventoryservice.model.Motorcycle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 @RestController
+@RefreshScope
 public class MotoInventoryController {
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    private RestTemplate restTemplate = new RestTemplate();
+
+    @Value("${vehicleMap}")
+    private String vehicleMap;
+
+    @Value("${serviceProtocol}")
+    private String serviceProtocol;
+
+    @Value("${servicePath}")
+    private String servicePath;
+
+    @Value("${answer}")
+    private String answer;
 
     @RequestMapping(value = "/motorcycles", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -55,5 +80,19 @@ public class MotoInventoryController {
 
         // do nothing here - in a real application we would update the entry in the backing data store
 
+    }
+
+    @RequestMapping(value = "/vehicle/{vin}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String, String> vin() {
+
+        List<ServiceInstance> instances = discoveryClient.getInstances(vehicleMap);
+
+        String magic8ServiceUri = serviceProtocol + instances.get(0).getHost() + ":" + instances.get(0).getPort() + servicePath;
+
+        Map answer = restTemplate.getForObject(magic8ServiceUri, Map.class);
+
+
+        return answer;
     }
 }
