@@ -1,5 +1,6 @@
 package com.trilogyed.motoinventoryproject.controller;
 
+import com.trilogyed.motoinventoryproject.dao.MotoInventoryDao;
 import com.trilogyed.motoinventoryproject.model.Motorcycle;
 import com.trilogyed.motoinventoryproject.util.feign.VinLookupClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +23,10 @@ public class MotoInventoryController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    private RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    private MotoInventoryDao motoInventoryDao;
 
-//    @Value("${vehicleMap}")
-//    private String vehicleMap;
-//
-//    @Value("${serviceProtocol}")
-//    private String serviceProtocol;
-//
-//    @Value("${servicePath}")
-//    private String servicePath;
-//
-//    @Value("${answer}")
-//    private String answer;
+    private RestTemplate restTemplate = new RestTemplate();
 
     @RequestMapping(value = "/motorcycles", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -43,25 +35,29 @@ public class MotoInventoryController {
 
         motorcycle.setId(rnd.nextInt(9999));
 
-        return motorcycle;
+        return motoInventoryDao.addMotorcycle(motorcycle);
+
+//        return motorcycle;
     }
 
     @RequestMapping(value = "/motorcycles/{motoId}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Motorcycle getMotorcycle(@PathVariable int motoId) {
+    public Motorcycle getMotorcycle(@PathVariable int motoId) throws IllegalArgumentException {
         if (motoId < 1) {
             throw new IllegalArgumentException("MotoId must be greater than 0.");
         }
 
-        Motorcycle moto = new Motorcycle();
-        moto.setId(motoId);
-        moto.setVin("54321");
-        moto.setMake("Ducati");
-        moto.setModel("Multistrada Enduro");
-        moto.setYear("2018");
-        moto.setColor("Red");
+        return motoInventoryDao.getMotorcycle(motoId);
 
-        return moto;
+//        Motorcycle moto = new Motorcycle();
+//        moto.setId(motoId);
+//        moto.setVin("54321");
+//        moto.setMake("Ducati");
+//        moto.setModel("Multistrada Enduro");
+//        moto.setYear("2018");
+//        moto.setColor("Red");
+//
+//        return moto;
     }
 
     @RequestMapping(value = "/motorcycles/{motoId}", method = RequestMethod.DELETE)
@@ -69,9 +65,10 @@ public class MotoInventoryController {
     public void deleteMotorcycle(@PathVariable("motoId") int motoId) {
         // do nothing here - in a real application we would delete the entry from
         // the backing data store.
+        motoInventoryDao.deleteMotorcycle(motoId);
     }
 
-    @RequestMapping(value = "/motorcycles/{motoId}")
+    @RequestMapping(value = "/motorcycles/{motoId}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateMotorcycle(@RequestBody @Valid Motorcycle motorcycle, @PathVariable int motoId) {
         // make sure the motoId on the path matches the id of the motorcycle object
@@ -79,23 +76,13 @@ public class MotoInventoryController {
             throw new IllegalArgumentException("Motorcycle ID on path must match the ID in the Motorcycle object.");
         }
 
+        motoInventoryDao.updateMotorcycle(motorcycle);
+
         // do nothing here - in a real application we would update the entry in the backing data store
 
     }
 
-//    @RequestMapping(value = "/vehicle/{vin}", method = RequestMethod.GET)
-//    @ResponseStatus(HttpStatus.OK)
-//    public Map<String, String> vin() {
-//
-//        List<ServiceInstance> instances = discoveryClient.getInstances(vehicleMap);
-//
-//        String magic8ServiceUri = serviceProtocol + instances.get(0).getHost() + ":" + instances.get(0).getPort() + servicePath;
-//
-//        Map answer = restTemplate.getForObject(magic8ServiceUri, Map.class);
-//
-//
-//        return answer;
-//    }
+
 @Autowired
 private final VinLookupClient client;
 
@@ -105,7 +92,7 @@ private final VinLookupClient client;
     }
 
     @RequestMapping(value="/vehicle/{vin}", method = RequestMethod.GET)
-    public Map<String, String> helloCloud(@PathVariable String vin) {
+    public Map<String, String> helloCloud(@PathVariable @Valid String vin) {
         return client.getVehicleByVin(vin);
     }
 }

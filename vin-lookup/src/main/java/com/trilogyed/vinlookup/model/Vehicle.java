@@ -1,11 +1,25 @@
 package com.trilogyed.vinlookup.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class Vehicle {
+    @NotEmpty(message = "You must supply a value for type.")
+    @Size(max = 20)
     private String type;
+    @NotEmpty(message = "You must supply a value for make.")
+    @Size(max = 20)
     private String make;
+    @NotEmpty(message = "You must supply a value for model.")
+    @Size(max = 20)
     private String model;
+    @NotEmpty(message = "You must supply a value for year.")
+    @Size(min = 4, max = 4)
     private String year;
+    @NotEmpty(message = "You must supply a value for color.")
+    @Size(max = 20)
     private String color;
+
     public String getType() {
         return type;
     }
