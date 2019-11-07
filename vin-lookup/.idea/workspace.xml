@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c5680fa-7783-4af3-a8d9-48a3b5f7f54d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../moto-inventory-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../moto-inventory-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../moto-inventory-service/src/main/java/com/example/motoinventoryservice/controller/MotoInventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../moto-inventory-service/src/main/java/com/example/motoinventoryservice/controller/MotoInventoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="203e9a29-dc8d-4ba0-b7aa-c37f4a64a244" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1TG7kVCg74n9CRolvM2hzafM11j" />
+  <component name="ProjectId" id="1TIOWur5PqTtdn4gLegeW4lu6uj" />
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
@@ -32,28 +35,37 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="VinLookupApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.trilogyed.vinlookup.VinLookupApplication" />
+      <module name="vin-lookup" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.trilogyed.vinlookup.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.VinLookupApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2c5680fa-7783-4af3-a8d9-48a3b5f7f54d" name="Default Changelist" comment="" />
-      <created>1573075524535</created>
+      <changelist id="203e9a29-dc8d-4ba0-b7aa-c37f4a64a244" name="Default Changelist" comment="" />
+      <created>1573144177382</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1573075524535</updated>
+      <updated>1573144177382</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>

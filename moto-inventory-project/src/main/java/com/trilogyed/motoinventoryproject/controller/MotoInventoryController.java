@@ -1,6 +1,7 @@
 package com.trilogyed.motoinventoryproject.controller;
 
 import com.trilogyed.motoinventoryproject.model.Motorcycle;
+import com.trilogyed.motoinventoryproject.util.feign.VinLookupClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -95,5 +96,17 @@ public class MotoInventoryController {
 //
 //        return answer;
 //    }
+@Autowired
+private final VinLookupClient client;
+
+
+    MotoInventoryController(VinLookupClient client) {
+        this.client = client;
+    }
+
+    @RequestMapping(value="/vehicle/{vin}", method = RequestMethod.GET)
+    public Map<String, String> helloCloud(@PathVariable String vin) {
+        return client.getVehicleByVin(vin);
+    }
 }
 

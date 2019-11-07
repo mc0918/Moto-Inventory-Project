@@ -1,17 +1,15 @@
-package com.trilogyed.motoinventoryproject;
+package com.trilogyed.vinlookup;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
-public class MotoInventoryProjectApplication {
+public class VinLookupApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MotoInventoryProjectApplication.class, args);
+		SpringApplication.run(VinLookupApplication.class, args);
 	}
 
 }
