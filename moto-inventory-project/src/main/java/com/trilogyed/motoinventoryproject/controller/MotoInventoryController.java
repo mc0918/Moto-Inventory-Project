@@ -83,8 +83,8 @@ public class MotoInventoryController {
     }
 
 
-@Autowired
-private final VinLookupClient client;
+    @Autowired
+    private final VinLookupClient client;
 
 
     MotoInventoryController(VinLookupClient client) {

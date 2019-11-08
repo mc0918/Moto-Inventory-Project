@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="203e9a29-dc8d-4ba0-b7aa-c37f4a64a244" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../moto-inventory-project/src/main/java/com/trilogyed/motoinventoryproject/controller/ControllerExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../moto-inventory-project/src/main/resources/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../moto-inventory-project/src/main/java/com/trilogyed/motoinventoryproject/controller/MotoInventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../moto-inventory-project/src/main/java/com/trilogyed/motoinventoryproject/controller/MotoInventoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/trilogyed/vinlookup/model/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trilogyed/vinlookup/model/Vehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trilogyed/vinlookup/controller/VinLookupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trilogyed/vinlookup/controller/VinLookupController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
